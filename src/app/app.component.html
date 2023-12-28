@@ -1,6 +1,15 @@
 <section>
     <user-component [ocupation]="userOcupation" (greet)="receiveEmition($event)" />
-    <customers-component />
     {{childsMessage}}
+</section>
+<section>
+    <h1>Comments</h1>
+    @defer {
+    <comments-components />
+    } @placeholder {
+    <p>Future comments to be loaded!</p>
+    }@loading (minimum 2s) {
+    <p>Loading comments...!</p>
+    }
 </section>
 <router-outlet></router-outlet>
