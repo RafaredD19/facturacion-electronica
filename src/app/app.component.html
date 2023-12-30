@@ -1,15 +1,3 @@
-<section>
-    <user-component [ocupation]="userOcupation" (greet)="receiveEmition($event)" />
-    {{childsMessage}}
-</section>
-<section>
-    <h1>Comments</h1>
-    @defer {
-    <comments-components />
-    } @placeholder {
-    <p>Future comments to be loaded!</p>
-    }@loading (minimum 2s) {
-    <p>Loading comments...!</p>
-    }
-</section>
-<router-outlet></router-outlet>
+<app-header></app-header>
+<app-sidebar (onToggleSideNav)="onToggleSideNav($event)"></app-sidebar>
+<app-dashboard></app-dashboard>
