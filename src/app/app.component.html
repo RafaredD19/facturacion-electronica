@@ -1,3 +1,13 @@
-<app-header></app-header>
-<app-sidebar (onToggleSideNav)="onToggleSideNav($event)"></app-sidebar>
-<app-dashboard></app-dashboard>
+<mat-toolbar class="mat-elevation-z3">
+    <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav opened mode="side" [style.width]="'250px'">
+   
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

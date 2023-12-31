@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { navbarData } from './nav-data';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,9 +20,22 @@ interface SideNavToggle {
 
 export class SidebarComponent {
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-  collapsed: boolean = true
+  collapsed: boolean = false
   screenWidth: number = 0
   navData: any[] = navbarData
+
+  // @HostListener('window:resize', ['$event'])
+  // onResize(event: any) {
+  //   this.screenWidth = window.innerWidth;
+  //   if (this.screenWidth <= 768) {
+  //     this.collapsed = false
+  //     this.onToggleSideNav.emit({ screenWidth: this.screenWidth, collapsed: this.collapsed })
+  //   }
+  // }
+
+  // ngOnInit(): void {
+  //   this.screenWidth = window.innerWidth;
+  // }
 
   toggleCollapse(): void {
     this.collapsed = !this.collapsed
@@ -30,6 +43,7 @@ export class SidebarComponent {
   }
 
   closeSidenav(): void {
-    this.collapsed = true
+    this.collapsed = true;
+    this.onToggleSideNav.emit({ screenWidth: this.screenWidth, collapsed: this.collapsed })
   }
 }

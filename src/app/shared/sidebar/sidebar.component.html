@@ -1,17 +1,15 @@
-<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+<div class="sidenav">
     <div class="logo-container">
-        <button class="logo" (click)="toggleCollapse()">A</button>
+        <button class="logo">A</button>
         @if (!collapsed) {
-            <div class="logo-text">Angular</div>
-            <button class="btn-close" (click)="closeSidenav()">
-                <mat-icon fontIcon="close" class="text-white"></mat-icon>
-            </button>
+        <div class="logo-text">Angular</div>
         }
     </div>
     <ul class="sidenav-nav">
         @for (item of navData; track $index) {
         <li class="sidenav-nav-item">
-            <a class="sidenav-nav-link" [routerLink]="[item.routeLink]">
+            <a class="sidenav-nav-link" [routerLink]="[item.routeLink]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
                 <mat-icon [fontIcon]="item.icon" class="sidenav-link-icon"></mat-icon>
                 @if (!collapsed) {
                 <span class="sidenav-link-text">{{item.label}}</span>

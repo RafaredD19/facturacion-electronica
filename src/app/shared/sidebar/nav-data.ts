@@ -5,8 +5,8 @@ export const navbarData = [
         label: 'Dashboard'
     },
     {
-        routeLink: 'prueba',
+        routeLink: 'reports',
         icon: 'key',
-        label: 'Prueba'
+        label: 'Reportes'
     }
 ]
