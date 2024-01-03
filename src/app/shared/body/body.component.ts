@@ -1,26 +1,40 @@
-import { Component, Input } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.component';
+
 
 @Component({
   selector: 'app-body',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    CustomSidenavComponent,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule
+  ],
   templateUrl: './body.component.html',
   styleUrl: './body.component.scss'
 })
 export class BodyComponent {
 
-  @Input() collapsed = false
-  @Input() screenWidth = 0
+  constructor(
+    private router: Router
+  ) { }
 
-  getBodyClass(): string {
-    let styleClass = ''
-    if (this.collapsed && this.screenWidth > 768) {
-      styleClass = 'body-trimmed';
-    } else if (this.collapsed && this.screenWidth <= 768 && this.screenWidth > 0) {
-      styleClass = 'body-md-screen';
-    }
-    return styleClass
+  collapsed = signal(false)
+
+  sidenavWitdh = computed(() => this.collapsed() ? '65px' : '250px');
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login'])
   }
 }

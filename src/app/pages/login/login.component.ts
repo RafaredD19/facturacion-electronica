@@ -55,7 +55,6 @@ export class LoginComponent {
 
     this._userService.login(user).subscribe({
       next: (v) => {
-        console.log(v.data)
         // Aquí manejas la respuesta exitosa
         localStorage.setItem('username', v.data.username)
         localStorage.setItem('token', v.data.token)

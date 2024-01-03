@@ -3,8 +3,7 @@ import {
   HttpInterceptor,
   HttpHandler,
   HttpEvent,
-  HttpRequest,
-  HttpErrorResponse
+  HttpRequest
 } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
@@ -25,7 +24,7 @@ export class addTokenInterceptor implements HttpInterceptor {
           console.log("acceso denegado")
           this.router.navigate(['/login'])
         }
-        return throwError(() => new Error('Error'))
+        return throwError(() => error);
       })
     )
   }

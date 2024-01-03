@@ -3,6 +3,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NotFountComponent } from './pages/not-fount/not-fount.component';
+import { AuthGuard } from './utils/auth.guard';
+import { BodyComponent } from './shared/body/body.component';
 
 export const routes: Routes = [
     {
@@ -11,12 +13,18 @@ export const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'dashboard',
-        component: DashboardComponent
-    },
-    {
-        path: 'reports',
-        component: ReportsComponent
+        path: '',
+        component: BodyComponent, // Componente con el diseño común
+        children: [
+            {
+                path: 'dashboard',
+                component: DashboardComponent, canActivate: [AuthGuard]
+            },
+            {
+                path: 'reports',
+                component: ReportsComponent, canActivate: [AuthGuard]
+            },
+        ]
     },
     {
         path: 'login',

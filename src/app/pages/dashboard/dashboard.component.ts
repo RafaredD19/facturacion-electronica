@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TablePaginationComponent } from '../../components/table-pagination/table-pagination.component';
+import { QuotesService } from '../../services/quotes.service';
+import { Quote } from '../../interfaces/quote';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +11,30 @@ import { TablePaginationComponent } from '../../components/table-pagination/tabl
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+  listQuotes: Quote[] = []
+  constructor(private _quotesService: QuotesService) { }
 
+  ngOnInit(): void {
+    this.getQuotes();
+  }
+
+  getQuotes() {
+    this._quotesService.findAllQuotesApi().subscribe({
+      next: (v) => {
+        this.listQuotes = v.data
+      },
+      error: (e) => {
+        console.log(e)
+        Swal.fire({
+          width: 300,
+          position: "bottom-end",
+          icon: 'error',
+          text: 'Se produjo un error al obtener cotizaciones. Por favor, inténtelo de nuevo más tarde.',
+          showConfirmButton: false,
+          timer: 2500
+        });
+      }
+    })
+  }
 }
