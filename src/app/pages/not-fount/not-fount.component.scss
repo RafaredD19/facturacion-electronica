@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,500;1,500&display=swap");
+
+
+/* 404 section start */
+.page_404 {
+  width: 100%;
+  padding: 10px 0;
+  background: var(--pure-white);
+  margin-top: 6rem;
+  min-height: 60vh;
+}
+
+.wrapper {
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  height: 400px;
+  background-position: center;
+}
+
+.msg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.msg h3 {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.msg p {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.wrapper h1 {
+  font-size: 80px;
+  text-align: center;
+}
+

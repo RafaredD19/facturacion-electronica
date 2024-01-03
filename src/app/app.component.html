@@ -1,13 +1,16 @@
-<mat-toolbar class="mat-elevation-z3">
-    <button mat-icon-button>
+<!-- <mat-toolbar class="shadow-sm">
+    <img src="../assets/logo_billing_v3.ico" alt="" width="50px">
+    <span class="px-3 font-bold text-gray-500">Mixercon</span>
+    <button mat-icon-button (click)="collapsed.set(!collapsed())">
         <mat-icon>menu</mat-icon>
     </button>
 </mat-toolbar>
 <mat-sidenav-container>
-    <mat-sidenav opened mode="side" [style.width]="'250px'">
-   
+    <mat-sidenav opened mode="side" [style.width]="sidenavWitdh()">
+        <app-custom-sidenav [collapsed]="collapsed()"></app-custom-sidenav>
     </mat-sidenav>
-    <mat-sidenav-content class="content">
+    <mat-sidenav-content class="content bg-slate-100" [style.margin-left]="sidenavWitdh()">
         <router-outlet></router-outlet>
     </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+<router-outlet></router-outlet>
