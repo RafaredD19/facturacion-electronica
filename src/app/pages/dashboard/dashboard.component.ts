@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TablePaginationComponent } from '../../components/table-pagination/table-pagination.component';
 import { QuotesService } from '../../services/quotes.service';
 import { Quote } from '../../interfaces/quote';
 import Swal from 'sweetalert2';
+import { TablePaginationComponent } from '../../components/table-pagination/table-pagination.component';
 
 @Component({
   selector: 'app-dashboard',
