@@ -19,4 +19,12 @@ export class AuthService {
   login(user: UserRequest): Observable<any> {
     return this.http.post(`${this.myAppUrl}/${this.myApiUrl}/auth/login`, user);
   }
+
+  isAuth(): boolean {
+    if (typeof localStorage !== 'undefined') {
+      console.log(localStorage.getItem('token'))
+      return true
+    }
+    return false
+  }
 }

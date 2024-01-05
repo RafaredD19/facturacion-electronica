@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
     this._quotesService.findAllQuotesApi().subscribe({
       next: (v) => {
         this.listQuotes = v.data
+        console.log(this.listQuotes)
       },
       error: (e) => {
         console.log(e)

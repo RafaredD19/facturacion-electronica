@@ -14,18 +14,30 @@ export class addTokenInterceptor implements HttpInterceptor {
   constructor(private router: Router) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('token')
-    if (token) {
-      req = req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })
+    if (typeof localStorage !== 'undefined') {
+      console.log("------------------------1-interceptor")
+      const token = localStorage.getItem('token')
+      if (token) {
+        req = req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })
+      }
+      return next.handle(req).pipe(
+        catchError((error: any) => {
+          if (error.status === 401) {
+            this.router.navigate(['/login'])
+          }
+          return throwError(() => error);
+        })
+      )
+    } else {
+      console.log("------------------------2-interceptor")
+      return next.handle(req).pipe(
+        catchError((error: any) => {
+          if (error.status === 401) {
+            this.router.navigate(['/login'])
+          }
+          return throwError(() => error);
+        })
+      )
     }
-    return next.handle(req).pipe(
-      catchError((error: any) => {
-        if (error.status === 401) {
-          console.log("acceso denegado")
-          this.router.navigate(['/login'])
-        }
-        return throwError(() => error);
-      })
-    )
   }
 };

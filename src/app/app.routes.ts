@@ -3,8 +3,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NotFountComponent } from './pages/not-fount/not-fount.component';
-import { AuthGuard } from './utils/auth.guard';
 import { BodyComponent } from './shared/body/body.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -28,8 +28,7 @@ export const routes: Routes = [
     },
     {
         path: 'login',
-        component: LoginComponent,
-        canActivate: [AuthGuard]
+        component: LoginComponent
     },
     {
         path: 'notfount',
