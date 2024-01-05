@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
         }
         return true;
       }
-  
+      console.log("---NO EXISTE EL TOKEN---")
       // Si no hay token, redirigir a la página de inicio de sesión
       return this.router.parseUrl('/login');
     } else {

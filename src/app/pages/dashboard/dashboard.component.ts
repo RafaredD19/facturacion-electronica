@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { QuotesService } from '../../services/quotes.service';
 import { Quote } from '../../interfaces/quote';
 import Swal from 'sweetalert2';
-import { TablePaginationComponent } from '../../components/table-pagination/table-pagination.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [TablePaginationComponent],
+  imports: [],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
